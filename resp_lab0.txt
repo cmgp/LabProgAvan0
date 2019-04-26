@@ -1,0 +1,13 @@
+¿Cuáles  son  las  dependencias  circulares  que  fueron  necesarias  solucionar  para  que  el programa compile?
+
+Para que una unidad de traduccion pueda compilar incluyendo los headers en cualquier orden aleatorio se deben de resolver todas las dependecias circulares entre cada par de dependencias.
+Se puede resolver de forma arbitraria, siempre y cuando queden resueltas todas las dependencias.
+Nosotros lo resolvimos haciendo que A incluyera a B y C.
+Que C incluyera B teniendo el forward declaration de A
+Y que B tuviera forward declaration de A y C
+
+Esto tambien se podria haber resuelto teniendo forward declaration en todos los headers ( de A, B y C ), ya que ninguna de las clases usa metodos o informacion de las otras, tan solo mantiene referencias a travez de punteros.
+
+¿Qué es forward declaration?
+
+Forward declaration es la delcaracion de un identificador para que se pueda hacer uso del mismo sin necesidad de tener acceso a su definicion. Por ejemplo en C++ podemos usar una referencia o puntero a una clase o tipo solo teniendo su forward declaration, aunque en estos casos no podemos usar nada que requiera informacion que proveeria la definicion ( no lo podriamos usar como valor, o usar sus metodos ).
